@@ -1,0 +1,41 @@
+query MyQuery {
+  solana(network: solana) {
+    instructions: instructions(
+      success: {is: true}
+      time: {after: "%s", till: "%s"}
+      programId: {is: "FcfzrnurPFXwxbx332wScnD5P86DwhpLpBbQsnr6LcH5"}
+    ) {
+      program {
+        id
+        name
+        parsedName
+      }
+      action {
+        name
+        type
+      }
+      data {
+        base58
+      }
+      external
+      transaction {
+        signature
+        success
+        transactionIndex
+        feePayer
+      }
+      log {
+        logs
+        instruction
+        result
+      }
+      accountsCount
+      block {
+        height
+        timestamp {
+          iso8601
+        }
+      }
+    }
+  }
+}
