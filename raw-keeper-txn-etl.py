@@ -78,7 +78,7 @@ latest_date = re.findall('\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z',date_string)[-1]
 
 
 # read-in bitquery query
-with open('entropy_instructions_bitQuery.txt') as query:
+with open('entropy_instructions_bitquery.txt') as query:
     query_string = query.read()
 
 
