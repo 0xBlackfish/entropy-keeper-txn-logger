@@ -62,7 +62,7 @@ df_daily_agg.to_parquet(date+'-daily-aggregation.parquet')
 
 # write the dataframe to google cloud storage as a parquet file
 print(datetime.now(), 'Uploading file to GCS...')
-blob = bucket.blob('daily/'+month+'/'+date+'/'+date+'-daily-aggregation.parquet')
+blob = bucket.blob('daily/'+month+'/'+date+'-daily-aggregation.parquet')
 blob.upload_from_filename(date+'-daily-aggregation.parquet')
 
 # delete the file from local memory
