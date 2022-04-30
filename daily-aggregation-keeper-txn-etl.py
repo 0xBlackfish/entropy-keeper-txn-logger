@@ -43,6 +43,7 @@ bucket = client.get_bucket('entropy-keeper-transactions')
 # set date to run on a 15 minute lag against the current datetime
 # this ensures that the final 30 minute window (23:30 to 0:00) of a day gets captured
 date = (datetime.now() - timedelta(minutes=45)).date().strftime('%Y-%m-%d')
+month = (datetime.now() - timedelta(minutes=45)).date().strftime('%Y-%m')
 print(datetime.now(), 'Starting on {}'.format(date))
 df_daily_agg = pd.DataFrame()
 
@@ -61,7 +62,7 @@ df_daily_agg.to_parquet(date+'-daily-aggregation.parquet')
 
 # write the dataframe to google cloud storage as a parquet file
 print(datetime.now(), 'Uploading file to GCS...')
-blob = bucket.blob('daily/'+date+'/'+date+'-daily-aggregation.parquet')
+blob = bucket.blob('daily/'+month+'/'+date+'/'+date+'-daily-aggregation.parquet')
 blob.upload_from_filename(date+'-daily-aggregation.parquet')
 
 # delete the file from local memory
