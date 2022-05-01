@@ -98,8 +98,8 @@ total_rewards_df.to_parquet(date+'-daily-rewards.parquet')
 
 # upload the file to google cloud storage
 print(datetime.now(), 'Uploading file to GCS...')
-blob = rewards_bucket.blob('daily/2022-04/'+date+'-daily-rewards.parquet')
-blob.upload_from_filename(date+'-daily-rewards.parquet')
+blob = rewards_bucket.blob('daily/2022-04/'+date_str+'-daily-rewards.parquet')
+blob.upload_from_filename(date_str+'-daily-rewards.parquet')
 
 # delete the file from local storage
 print(datetime.now(), 'Deleting file from local memory...')
