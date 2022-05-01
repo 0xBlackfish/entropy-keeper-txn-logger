@@ -122,6 +122,12 @@ else:
     print(datetime.now(), 'Creating parquet file...')       
     df_reduced.to_parquet(after_param+'-'+till_param+'.parquet')
 
+    print(datetime.now(), 'Writing data to GBQ...')
+    df_reduced.rename(columns={
+        'block.height' : 'block_height',
+        'block.timestamp.iso8601' : 'block_timestamp_iso8601'
+    }).to_gbq('solana.entropy_keeper_transactions',if_exists='append')
+
     print(datetime.now(), 'Uploading file to GCS...')
     blob = bucket.blob('raw/'+datetime.strptime(latest_date,'%Y-%m-%dT%H:%M:%SZ').date().strftime('%Y-%m-%d')+'/'+after_param+'-'+till_param+'.parquet')
     blob.upload_from_filename(after_param+'-'+till_param+'.parquet')
