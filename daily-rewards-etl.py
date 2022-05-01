@@ -82,10 +82,10 @@ consumeEvents_rewards_dict = {}
 otherEvents_rewards_dict = {}
 
 for wallet in consumeEvents_time_dict.keys():
-    consumeEvents_rewards_dict[wallet] = rewards_rate_table['consume_events_reward'][date] * (consumeEvents_time_dict[wallet] / consumeEvents_time)
+    consumeEvents_rewards_dict[wallet] = rewards_rate_table['consume_events_reward'][date_str] * (consumeEvents_time_dict[wallet] / consumeEvents_time)
 
 for wallet in otherEvents_time_dict.keys():
-    otherEvents_rewards_dict[wallet] = rewards_rate_table['other_events_reward'][date] * (otherEvents_time_dict[wallet] / otherEvents_time)
+    otherEvents_rewards_dict[wallet] = rewards_rate_table['other_events_reward'][date_str] * (otherEvents_time_dict[wallet] / otherEvents_time)
 
 otherEvents_rewards_df = pd.DataFrame(list(otherEvents_rewards_dict.items()),columns=['entropy_keeper_address','rewards'])
 consumeEvents_rewards_df = pd.DataFrame(list(consumeEvents_rewards_dict.items()),columns=['entropy_keeper_address','rewards'])
