@@ -94,7 +94,7 @@ total_rewards_df['date'] = date
 
 
 # write the total reward dataframe into local memory
-total_rewards_df.to_parquet(date+'-daily-rewards.parquet')
+total_rewards_df.to_parquet(date_str+'-daily-rewards.parquet')
 
 # upload the file to google cloud storage
 print(datetime.now(), 'Uploading file to GCS...')
