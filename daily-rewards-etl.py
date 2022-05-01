@@ -103,4 +103,4 @@ blob.upload_from_filename(date_str+'-daily-rewards.parquet')
 
 # delete the file from local storage
 print(datetime.now(), 'Deleting file from local memory...')
-os.remove(date+'-daily-rewards.parquet')
+os.remove(date_str+'-daily-rewards.parquet')
