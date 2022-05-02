@@ -113,7 +113,7 @@ else:
     df['data.base58_trunc'] = df['data.base58'].apply(lambda x: x[:5])
     df['instruction_type'] = df['data.base58_trunc'].apply(lambda x: instruction_type_dict[x] if x in instruction_type_dict.keys() else 'other')
 
-    df_reduced = df[df['instruction_type'].isin(['UpdateRootBank','CacheRootBanks','CachePerpMarkets','CachePrices','UpdateFunding','ConsumeEvents'])][['block.height','block.timestamp.iso8601','transaction.feePayer','instruction_type','transaction.signature']]
+    df_reduced = df[df['instruction_type'].isin(['UpdateRootBank','CacheRootBanks','CachePerpMarkets','CachePrices','UpdateFunding','ConsumeEvents'])][['block.height','block.timestamp.iso8601','transaction.feePayer','instruction_type','transaction.signature']].drop_duplicates()
     df_reduced.rename(columns={
         'transaction.feePayer' : 'entropy_keeper_address',
         'transaction.signature' : 'transaction_id'
