@@ -24,12 +24,12 @@ with open ('gbq_total_rewards.sql') as query:
 print(datetime.now(), "Starting the process for the {} txn set...".format(date))
 
 rewards_df = pd.read_gbq(query=query_string.format(date_str))
-rewards_df['date'] = date_str
+rewards_df['as_of_date'] = date_str
 
 
 # create a local parquet file
 print(datetime.now(), 'Creating parquet file...')   
-rewards_df[['as_of_date','entropy_keeper_address','total_keeper_reward']].to_parquet('total-rewards-as-of-'+date+'.parquet')
+rewards_df[['as_of_date','entropy_keeper_address','total_keeper_reward']].to_parquet('total-rewards-as-of-'+date_str+'.parquet')
 
 # write the file to google bigquery
 print(datetime.now(), 'Writing data to GBQ...')
@@ -37,13 +37,13 @@ rewards_df[['as_of_date','entropy_keeper_address','total_keeper_reward']].to_gbq
 
 # upload the file to google cloud storage
 print(datetime.now(), 'Uploading file to GCS...')
-blob = rewards_bucket.blob('cumulative/'+date[:7]+'/total-rewards-as-of-'+date+'.parquet')
-blob.upload_from_filename('total-rewards-as-of-'+date+'.parquet')
+blob = rewards_bucket.blob('cumulative/'+date_str[:7]+'/total-rewards-as-of-'+date_str+'.parquet')
+blob.upload_from_filename('total-rewards-as-of-'+date_str+'.parquet')
 
 print(datetime.now(), 'Uploading "current" file to GCS...')
 blob = rewards_bucket.blob('cumulative/current-total-rewards.parquet')
-blob.upload_from_filename('total-rewards-as-of-'+date+'.parquet')
+blob.upload_from_filename('total-rewards-as-of-'+date_str+'.parquet')
 
 # delete the file from local storage
 print(datetime.now(), 'Deleting file from local memory...')
-os.remove('total-rewards-as-of-'+date+'.parquet')
+os.remove('total-rewards-as-of-'+date_str+'.parquet')
