@@ -1,13 +1,10 @@
 import os
 import discord
-from dotenv import load_dotenv
 from discord.ext import commands
 import pandas as pd
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
 
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 bot = commands.Bot(command_prefix="$")
 
