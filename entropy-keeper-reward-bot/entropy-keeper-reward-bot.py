@@ -5,6 +5,7 @@ import pandas as pd
 
 
 TOKEN = os.getenv('DISCORD_TOKEN')
+GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix="$")
 
@@ -23,6 +24,6 @@ async def show_keeper_rewards(ctx, entropy_keeper_address):
     user_rewards = df[df['entropy_keeper_address'] == entropy_keeper_address].iloc[0]['total_keeper_reward']
     as_of_date = df[df['entropy_keeper_address'] == entropy_keeper_address].iloc[0]['as_of_date']
 
-    await ctx.channel.send("Your wallet has earned {:,.2f} entropy token as of {}".format(user_rewards, as_of_date))
+    await ctx.channel.send("Your wallet has earned {:,.2f} entropy token as of {} 23:59:59 UTC".format(user_rewards, as_of_date))
 
 bot.run(TOKEN)
