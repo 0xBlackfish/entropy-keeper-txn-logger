@@ -48,8 +48,8 @@ rewards_df.to_gbq('entropy.keeper_rewards_daily',if_exists='append')
 # upload the file to google cloud storage
 print(datetime.now(), 'Uploading file to GCS...')
 blob = rewards_bucket.blob('daily/'+month_str+'/'+date_str+'-daily-rewards.parquet')
-blob.upload_from_filename(date+'-daily-rewards.parquet')
+blob.upload_from_filename(date_str+'-daily-rewards.parquet')
 
 # delete the file from local storage
 print(datetime.now(), 'Deleting file from local memory...')
-os.remove(date+'-daily-rewards.parquet')
+os.remove(date_str+'-daily-rewards.parquet')
