@@ -30,7 +30,7 @@ print(datetime.now(), "Starting the process for the {} txn set...".format(date))
 rewards_df = pd.read_gbq(query=query_string.format(date_str))
 
 rewards_df['daily_total_reward'] = rewards_df['instruction_type'].apply(
-    lambda x: rewards_rate_table.loc[date]['consume_events_reward'] if x == 'ConsumeEvents' else rewards_rate_table.loc[date]['other_events_reward']
+    lambda x: rewards_rate_table.loc[date_str]['consume_events_reward'] if x == 'ConsumeEvents' else rewards_rate_table.loc[date_str]['other_events_reward']
 )
 
 rewards_df['daily_keeper_reward'] = rewards_df['pct_of_time'] * rewards_df['daily_total_reward']
