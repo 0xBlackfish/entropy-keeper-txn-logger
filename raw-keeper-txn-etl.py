@@ -84,7 +84,7 @@ with open('entropy_instructions_bitquery.txt') as query:
 
 # initialize bitquery query parameters
 after_param = latest_date
-till_param = (datetime.strptime(latest_date,'%Y-%m-%dT%H:%M:%SZ')+timedelta(minutes=30)).strftime('%Y-%m-%dT%H:%M:%SZ')
+till_param = (datetime.strptime(latest_date,'%Y-%m-%dT%H:%M:%SZ')+timedelta(minutes=10)).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
 # execute bitquery query
