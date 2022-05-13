@@ -39,21 +39,21 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
 
     # write message
     response = """
+ 
+    :zap: **GENERAL** :zap:
+    * __First Keeper Day__: {}
+    * __Number of Days Keeping__: {}
 
-    **GENERAL**
-    * First Keeper Day: {}
-    * Number of Days Keeping: {}
-
-    **REWARDS**
+    :moneybag: **REWARDS** :moneybag:
     *Consume Events*
-    * Average Daily Rewards: {:,.2f}
-    * Highest Single Day Earnings: {:,.2f}
-    * Lowest Single Day Earnigns: {:,.2f}
+    * __Average Daily Rewards__: {:,.2f}
+    * __Highest Single Day Earning__s: {:,.2f}
+    * __Lowest Single Day Earnigns__: {:,.2f}
 
     *Other Events*
-    * Average Daily Rewards: {:,.2f}
-    * Highest Single Day Earnings: {:,.2f}
-    * Lowest Single Day Earnigns: {:,.2f}
+    * __Average Daily Rewards__: {:,.2f}
+    * __Highest Single Day Earnings__: {:,.2f}
+    * __Lowest Single Day Earnigns__: {:,.2f}
 
     **PERCENTAGE OF TIME**
 
