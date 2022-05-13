@@ -12,7 +12,7 @@ txns as (
     count(distinct ttl.transaction_id) * 0.000005 as total_sol_burn
   from entropy.txns_time_lag ttl
   where
-    date(ttl.date_time) <= date('{}')
+    date(ttl.date_time) <= date('{0}')
   group by 1
   order by 2 desc
 ),
@@ -39,7 +39,7 @@ rewards_and_time as (
     min(case when instruction_type = 'OtherEvents' then krd.pct_of_time end) as worst_other_events_pct_of_time
   from entropy.keeper_rewards_daily krd
   where
-    date(krd.date) <= date('{}')
+    date(krd.date) <= date('{0}')
   group by 1
   order by 4 desc
 )
