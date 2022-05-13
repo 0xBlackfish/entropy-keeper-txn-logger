@@ -29,7 +29,7 @@ async def show_keeper_rewards(ctx, entropy_keeper_address):
 
     await ctx.channel.send("Your wallet has earned {:,.2f} entropy tokens as of {} 23:59:59 UTC".format(user_rewards, as_of_date))
 
-@bot.command(name='keeper_stats')
+@bot.command(name='stats')
 async def show_keeper_stats(ctx, entropy_keeper_address):
 
     # get current keeper stats for a given keeper address
