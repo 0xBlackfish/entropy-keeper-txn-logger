@@ -40,10 +40,10 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
     # write message
     response = """
 
-    **Stats for {}**\n
-    **GENERAL**\n
-    First Keeper Day: {}\n
-    Number of Days Keeping: {}
+    **Stats for {}**
+    *GENERAL*
+    __First Keeper Day__: {}
+    __Number of Days Keeping__: {}
 
     """.format(
         address_df['entropy_keeper_address'].iloc[0],
