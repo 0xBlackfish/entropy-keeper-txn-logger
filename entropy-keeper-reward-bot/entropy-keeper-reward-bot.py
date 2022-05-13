@@ -39,17 +39,16 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
 
     # write message
     response = """
-    
-    :zap: **Stats for {}** :zap: \n
-    \n
+
+    **Stats for {}**\n
     **GENERAL**\n
     First Keeper Day: {}\n
     Number of Days Keeping: {}
 
     """.format(
-        address_df['entropy_keeper_address'],
-        address_df['first_keeper_day'],
-        address_df['number_of_days_keeping']
+        address_df['entropy_keeper_address'].iloc[0],
+        address_df['first_keeper_day'].iloc[0],
+        address_df['number_of_days_keeping'].iloc[0]
     )
 
     await ctx.channel.send(response)
