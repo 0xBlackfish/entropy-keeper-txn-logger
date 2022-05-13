@@ -40,15 +40,32 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
     # write message
     response = """
 
-    **Stats for {}**
-    *GENERAL*
-    __First Keeper Day__: {}
-    __Number of Days Keeping__: {}
+    **GENERAL**
+    * First Keeper Day: {}
+    * Number of Days Keeping: {}
+
+    **REWARDS**
+    *Consume Events*
+    * Average Daily Rewards: {:,.2f}
+    * Highest Single Day Earnings: {:,.2f}
+    * Lowest Single Day Earnigns: {:,.2f}
+
+    *Other Events*
+    * Average Daily Rewards: {:,.2f}
+    * Highest Single Day Earnings: {:,.2f}
+    * Lowest Single Day Earnigns: {:,.2f}
+
+    **PERCENTAGE OF TIME**
 
     """.format(
-        address_df['entropy_keeper_address'].iloc[0],
         address_df['first_keeper_day'].iloc[0],
-        address_df['number_of_days_keeping'].iloc[0]
+        address_df['number_of_days_keeping'].iloc[0],
+        address_df['avg_daily_consume_events_reward'].iloc[0],
+        address_df['best_consume_events_reward'].iloc[0],
+        address_df['worst_consume_events_reward'].iloc[0],
+        address_df['avg_daily_other_events_reward'].iloc[0],
+        address_df['best_other_events_reward'].iloc[0],
+        address_df['worst_other_events_reward'].iloc[0]
     )
 
     await ctx.channel.send(response)
