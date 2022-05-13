@@ -47,8 +47,8 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
     :moneybag: **REWARDS** :moneybag:
     *Consume Events*
     * __Average Daily Rewards__: {:,.2f}
-    * __Highest Single Day Earning__s: {:,.2f}
-    * __Lowest Single Day Earnigns__: {:,.2f}
+    * __Highest Single Day Earnings__: {:,.2f}
+    * __Lowest Single Day Earnings__: {:,.2f}
 
     *Other Events*
     * __Average Daily Rewards__: {:,.2f}
@@ -66,6 +66,19 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
     * __Highest Single Day Pct of Time__: {:.1%}
     * __Lowest Single Day Pct of Time__: {:.1%}
 
+    :computer: **TRANSACTIONS** :computer:
+    *Instructions*
+    * __Total Txns Confirmed__: {:,.0f}
+    * __CachePerpMarkets Txns__: {:,.0f}
+    * __CachePrices Txns__: {:,.0f}
+    * __CacheRootBanks Txns__: {:,.0f}
+    * __UpdateRootBanks Txns__: {:,.0f}
+    * __UpdateFunding Txns__: {:,.0f}
+    * __ConsumeEvents Txns__: {:,.0f}
+
+    *Costs*
+    * __Total SOL Burn__: {:,.2f}
+
     """.format(
         address_df['first_keeper_day'].iloc[0],
         address_df['number_of_days_keeping'].iloc[0],
@@ -81,6 +94,14 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
         address_df['avg_daily_other_events_pct_of_time'].iloc[0],
         address_df['best_other_events_pct_of_time'].iloc[0],
         address_df['worst_other_events_pct_of_time'].iloc[0],
+        address_df['total_transactions_confirmed'].iloc[0],
+        address_df['CachePerpMarkets_txns'].iloc[0],
+        address_df['CachePrices_txns'].iloc[0],
+        address_df['CacheRootBanks_txns'].iloc[0],
+        address_df['UpdateRootBank_txns'].iloc[0],
+        address_df['UpdateFunding_txns'].iloc[0],
+        address_df['ConsumeEvents_txns'].iloc[0],
+        address_df['total_sol_burn'].iloc[0]
     )
 
     await ctx.channel.send(response)
