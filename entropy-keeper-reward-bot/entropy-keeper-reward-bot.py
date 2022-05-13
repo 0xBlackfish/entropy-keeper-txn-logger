@@ -39,7 +39,7 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
 
     # write message
     response = """
- 
+    KEEPER BOT STATS\n
     :zap: **GENERAL** :zap:
     * __First Keeper Day__: {}
     * __Number of Days Keeping__: {}
