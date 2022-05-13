@@ -53,9 +53,18 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
     *Other Events*
     * __Average Daily Rewards__: {:,.2f}
     * __Highest Single Day Earnings__: {:,.2f}
-    * __Lowest Single Day Earnigns__: {:,.2f}
+    * __Lowest Single Day Earnings__: {:,.2f}
 
-    **PERCENTAGE OF TIME**
+    :clock: **PERCENTAGE OF TIME** :clock:
+    *Consume Events*
+    * __Average Daily Pct of Time__: {:.1%}
+    * __Highest Single Day Pct of Time__: {:.1%}
+    * __Lowest Single Day Pct of Time__: {:.1%}
+
+    *Other Events*
+    * __Average Daily Pct of Time__: {:.1%}
+    * __Highest Single Day Pct of Time__: {:.1%}
+    * __Lowest Single Day Pct of Time__: {:.1%}
 
     """.format(
         address_df['first_keeper_day'].iloc[0],
@@ -65,7 +74,13 @@ async def show_keeper_stats(ctx, entropy_keeper_address):
         address_df['worst_consume_events_reward'].iloc[0],
         address_df['avg_daily_other_events_reward'].iloc[0],
         address_df['best_other_events_reward'].iloc[0],
-        address_df['worst_other_events_reward'].iloc[0]
+        address_df['worst_other_events_reward'].iloc[0],
+        address_df['avg_daily_consume_events_pct_of_time'].iloc[0],
+        address_df['best_consume_events_pct_of_time'].iloc[0],
+        address_df['worst_consume_events_pct_of_time'].iloc[0],
+        address_df['avg_daily_other_events_pct_of_time'].iloc[0],
+        address_df['best_other_events_pct_of_time'].iloc[0],
+        address_df['worst_other_events_pct_of_time'].iloc[0],
     )
 
     await ctx.channel.send(response)
