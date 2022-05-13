@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from audioop import add
 import os
 import discord
 from discord.ext import commands
@@ -27,5 +28,30 @@ async def show_keeper_rewards(ctx, entropy_keeper_address):
     as_of_date = df[df['entropy_keeper_address'] == entropy_keeper_address].iloc[0]['as_of_date']
 
     await ctx.channel.send("Your wallet has earned {:,.2f} entropy tokens as of {} 23:59:59 UTC".format(user_rewards, as_of_date))
+
+@bot.command(name='keeper_stats')
+async def show_keeper_stats(ctx, entropy_keeper_address):
+
+    # get current keeper stats for a given keeper address
+    df = pd.read_parquet('gs://entropy-rewards/cumulative/current-keeper-stats.parquet')
+    address_df = df[df['entropy_keeper_address'] == entropy_keeper_address]
+
+
+    # write message
+    response = """
+    
+    :zap: **Stats for {}** :zap: \n
+    \n
+    **GENERAL**\n
+    First Keeper Day: {}\n
+    Number of Days Keeping: {}
+
+    """.format(
+        address_df['entropy_keeper_address'],
+        address_df['first_keeper_day'],
+        address_df['number_of_days_keeping']
+    )
+
+    await ctx.channel.send(response)
 
 bot.run(TOKEN)
